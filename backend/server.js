@@ -1,11 +1,16 @@
 const express = require("express");
+const connectDB = require("./config/db");
+const dotenv = require("dotenv");
 const notes = require("./data/notes")
 const app = express();
+dotenv.config();
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.log(`server is runing in PORT ${PORT}`))
 
+app.listen(PORT, console.log(`server is runing at PORT ${PORT}`))
+
+connectDB();
 app.get("/", (req, res) => {
     res.send("API is running")
 })
